@@ -84,3 +84,31 @@ sajib.age; // 51
 // const rajib = new Person('Rajib', 1994); // Person {birthYear: 1994}
 const rajib = new Person('Rajib Mandal', 1994); // Person {_fullName: 'Rajib Mandal', birthYear: 1994}
 ```
+
+
+## Static Methods:
+
+- In JavaScript, static methods are functions that are associated with a class rather than an instance of that class. 
+- They are defined using the `static` keyword within the class declaration.
+- Static methods are not available on the instances, and sometimes they are still usefull to implement some kind of helper function about a class or about a constructor function.
+
+```javascript
+class Person {
+    constructor(firstName, birthYear) {
+      this.firstName = firstName;
+      this.birthYear = birthYear;
+    }
+  
+    // Instance methods
+    // Methods will be added to .prototype property
+    calcAge() {
+      console.log(2050 - this.birthYear);
+    }
+  
+    static hey() {
+        console.log(`Hi Sajib`)
+    }
+  }
+
+  Person.hey(); // Hi Sajib
+  ```
