@@ -20,7 +20,7 @@ const Person = function (firstName, birthYear) {
     // But instead to solve this problem, we are gonna use 'Prototypes and Prototype Inheritance'.
     // Note:
     //    Function Constructors are not really a feature of JavaScript language.
-    thid.calcAge = function () {
+    this.calcAge = function () {
         console.log(2050 - this.birthYear);
     }
 }
