@@ -38,7 +38,7 @@ const copiedArray = Array.from(originalArray);
 ### Splice method:
 - `splice()` method also create an array. But it's change the original arry.
 - `splice()` method have three parameters (start, numberOfElementsDelete, numberOfElementsInsert).
-```javascript
+- ```javascript
 splice(start)
 splice(start, deleteCount)
 splice(start, deleteCount, item1)
