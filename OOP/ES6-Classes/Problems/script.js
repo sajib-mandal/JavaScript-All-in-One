@@ -23,9 +23,13 @@ class Car {
 
 
 
-const car1 = new Car('Ford', 120);
-// car1.accelerate(); // 130
-// car1.brake(); // 115
-console.log(car1.speedUS); // 75 mi/h
-car1.speedUS = 50;
-console.log(car1)
+class EV extends Car {
+    #charge;
+    constructor(make, speed, charge) {
+        super(make, speed);
+        this.#charge = charge;
+    }
+}
+
+const rivian = new EV('Rivian', 120, 23);
+rivian.accelerate()
