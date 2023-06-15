@@ -71,12 +71,74 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// Callback
+// a callback function, the name of the function could be any name
+const callback = n => {
+  return n ** 2;
+};
 
-const arr = ['a', 'b', 'c', 'd', 'e'];
-console.log(arr.reverse()); // ['e', 'd', 'c', 'b', 'a']
-console.log(arr); // ['e', 'd', 'c', 'b', 'a']
+function cube(callback, n) {
+  return callback(n) * n;
+}
 
+// console.log(cube(callback, 3));
+
+// Returing function
+const higherOrder = n => {
+  const doSomething = m => {
+    const doWhatEver = t => {
+      return 2 * n + 3 * m + t;
+    };
+    return doWhatEver;
+  };
+  return doSomething;
+};
+
+// console.log(higherOrder(2)(3)(11));
+
+// call-back function
+const numbers = [1, 2, 3, 4, 5];
+// const sumArray = arr => {
+//   let sum = 0;
+//   const callback = function(element) {
+//     sum += element;
+//   }
+
+//   arr.forEach(callback);
+//   return sum;
+// };
+
+// console.log(sumArray(numbers));
+
+const sumArray = arr => {
+  let sum = 0;
+  arr.forEach(function (element) {
+    sum += element;
+  });
+  return sum;
+};
+// console.log(sumArray(numbers))
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// 'for of' loop
+for (const [index, mov] of movements.entries()) {
+  if (mov > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(mov)}`);
+  }
+}
+
+// forEach
+movements.forEach(function (mov, index) {
+  if (mov > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(mov)}`);
+  }
+});
