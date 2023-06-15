@@ -62,7 +62,7 @@ const sumArray = arr => {
 console.log(sumArray(numbers));
 ```
 
-### forEach(callback):
+## forEach(callback):
 - The `forEach` function is a higher-order function that allows you to iterate over the elements of an array and execute a provided function for each element. It is commonly used when you want to perform a certain operation on each item in an array without explicitly creating a new array.
 - `continue` and `break` statement not work `forEach` loop.
 
@@ -103,4 +103,40 @@ movements.forEach(function(mov) {
     console.log(`You withdrew ${Math.abs(mov)}`);
   }
 });
-````
+```
+
+### forEach With Maps and Sets:
+- forEach also work map and set data structure.
+
+Map:
+```javascript
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+Output:
+USD: United States dollar
+EUR: Euro
+GBP: Pound sterling
+```
+
+Set: 
+- Sets `key` and `value` are same. Because sets does not have any `keys` and does not have `index` either.
+```javascript
+const currenciesUnique = new Set(['USD', 'TK', 'USD', 'EUR', 'EUR']);
+currenciesUnique.forEach(function(cur, i) {
+  console.log(`${i}: ${cur}`)
+});
+
+Output: 
+
+USD: USD
+TK: TK
+EUR: EUR
+```
