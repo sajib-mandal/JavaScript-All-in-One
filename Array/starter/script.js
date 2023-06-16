@@ -61,8 +61,9 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-
 // implementation
+
+// Display Movements
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -70,7 +71,9 @@ const displayMovements = function (movements) {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${i+1} ${type}</div>
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -81,25 +84,30 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+// Create UserName
+const createUserNames = function (accs) {
+  accs.forEach(function(acc) {
+    acc.userName = acc.owner
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  })
+};
+
+createUserNames(accounts);
 
 
+// Total Balance
+const calcPrintBalance = function (acc) {
+  const balance = acc.reduce(function (acc, val) {
+    return acc + val;
+  });
+  labelBalance.textContent = `${balance}€`
+};
 
+calcPrintBalance(account1.movements);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
@@ -162,6 +170,37 @@ displayMovements(account1.movements);
 // console.log(sumArray(numbers))
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const total = movements.reduce(function (acc, val) {
+//   return acc + val;
+// });
+
+// console.log(total)
+
+// const numbers = [1, 2, 3, 4, 5];
+
+// const sum = numbers.reduce(function (acc, curr, i) {
+//   console.log(`Iteration ${i}: ${acc}`)
+//   return acc + curr;
+// }, 0);
+
+// console.log(sum); 
+
+// /*
+// // Output:
+// Iteration 0: 0
+// Iteration 1: 1
+// Iteration 2: 3
+// Iteration 3: 6
+// Iteration 4: 10
+// 15
+// */
+
+
+// const deposit = movements.filter(function(mov) {
+//   return mov > 0;
+// });
+  
+// console.log(deposit)
 
 // 'for of' loop
 // for (const [index, mov] of movements.entries()) {
@@ -187,6 +226,17 @@ displayMovements(account1.movements);
 //   ['GBP', 'Pound sterling'],
 // ]);
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const max = movements.reduce(function (acc, mov) {
+  if (acc < mov) {
+    acc = mov;
+  };
+  return acc;
+});
+
+console.log(max);
+
 // currencies.forEach(function(value, key, map) {
 //   console.log(`${key}: ${value}`);
 // });
@@ -196,32 +246,44 @@ displayMovements(account1.movements);
 //   console.log(`${i}: ${cur}`)
 // })
 
-
-
 // Coding Challenge #1
 /*
 TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
 TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 */
 
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const newDogsJulia = dogsJulia.slice(1, -2);
+//   const allDogs = newDogsJulia.concat(dogsKate);
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const newDogsJulia = dogsJulia.slice(1, -2);
-  const allDogs = newDogsJulia.concat(dogsKate);
-  
-  allDogs.forEach(function (val, i) {
-    if (val >= 3) {
-      console.log(`Dog number ${i+1} is an adult, and is ${val} years old`);
-    } else {
-      console.log(`Dog number ${i+1} is an puppy, and is ${val} years old`);
-    }
-  });
-};
+//   allDogs.forEach(function (val, i) {
+//     if (val >= 3) {
+//       console.log(`Dog number ${i+1} is an adult, and is ${val} years old`);
+//     } else {
+//       console.log(`Dog number ${i+1} is an puppy, and is ${val} years old`);
+//     }
+//   });
+// };
 
-
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3])
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3])
 
 // const arr = [3, 5, 2, 12, 7];
 // const newArray = arr.slice(1, -1);
 // console.log(newArray);
 // console.log(arr)
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movementDescriptions = movements.map(function (mov, i) {
+//   if (mov > 0) {
+//     return `Movement ${i + 1}: You deposited ${mov}`;
+//   } else {
+//     return `Movement ${i + 1}: You deposited ${mov}`;
+//   }
+// });
+
+// const movementDescriptions = movements.map(function (mov, i) {
+//   return `Movement ${i + 1}: You ${mov > 0 ? 'Deposited' : 'withdrew'} ${Math.abs(mov)}`;
+// });
+
+// console.log(movementDescriptions);
+// // ['Movement 1: You Deposited 200', 'Movement 2: You Deposited 450', 'Movement 3: You withdrew 400', 'Movement 4: You Deposited 3000', 'Movement 5: You withdrew 650', 'Movement 6: You withdrew 130', 'Movement 7: You Deposited 70', 'Movement 8: You Deposited 1300']

@@ -62,13 +62,13 @@ const sumArray = arr => {
 console.log(sumArray(numbers));
 ```
 
-## forEach(callback):
+### forEach():
 - The `forEach` function is a higher-order function that allows you to iterate over the elements of an array and execute a provided function for each element. It is commonly used when you want to perform a certain operation on each item in an array without explicitly creating a new array.
 - `continue` and `break` statement not work `forEach` loop.
 
 The syntax of the forEach function is as follows:
 ```javascript
-array.forEach(callback(currentValue [, index [, array]])[, thisArg]);
+array.forEach(callback(currentValue, index, array)[, thisArg]);
 ```
 
 Let's break down the parameters:
@@ -139,4 +139,121 @@ Output:
 USD: USD
 TK: TK
 EUR: EUR
+```
+
+## DATA TRANSFORMATIONS: map(), filter(), and reduce()
+- All three methods that are use to create new `array` based on transforming data from other arrays.
+- But `reduce()` method not give any array.
+
+### map():
+- The `map()` method is used to create a new array by applying a provided function to each element of an existing array. It doesn't modify the original array; instead, it returns a new array with the modified values.
+- `map()` method inside no console.log. It only `return`.
+- The `map()` method are store as a variable. Because it return an array.
+- It also allow (value, index, arr).
+
+The syntax of the map() method is as follows:
+```javascript
+array.map(callback(currentValue, index, array)[, thisArg])
+```
+
+Here's an example that demonstrates the usage of the map() method:
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const multipliedByTwo = numbers.map(function (number) { 
+  return number * 2
+});
+
+console.log(multipliedByTwo); // Output: [2, 4, 6, 8, 10]
+```
+```javascript
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movementDescriptions = movements.map(function (mov, i) {
+  if (mov > 0) {
+    return `Movement ${i + 1}: You deposited ${mov}`;
+  } else {
+    return `Movement ${i + 1}: You deposited ${mov}`;
+  }
+});
+
+const movementDescriptions = movements.map(function (mov, i) {
+  return `Movement ${i + 1}: You ${mov > 0 ? 'Deposited' : 'withdrew'} ${Math.abs(mov)}`;
+});
+
+console.log(movementDescriptions);
+// ['Movement 1: You Deposited 200', 'Movement 2: You Deposited 450', 'Movement 3: You withdrew 400', 'Movement 4: You Deposited 3000', 'Movement 5: You withdrew 650', 'Movement 6: You withdrew 130', 'Movement 7: You Deposited 70', 'Movement 8: You Deposited 1300']
+```
+
+### filter():
+- The `filter()` method is an array method that creates a new array containing all the elements that pass a specific condition. It takes a callback function as its argument, which is executed on each element of the array. The callback function determines whether an element should be included in the resulting array.
+- The `filter()` method iterates over each element in the array and calls the callback function for each element. If the callback function returns `true` for an element, it is included in the new array. If the callback function returns `false`, the element is excluded.
+
+The syntax for the filter() method is as follows:
+```javascript
+array.filter(callback(element, index, array)[, thisArg]);
+```
+
+Here's an example to illustrate how the `filter()` method works:
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const evenNumbers = numbers.filter(function (number) {
+  return number % 2 === 0;
+});
+
+console.log(evenNumbers); // Output: [2, 4]
+```
+
+### reduce():
+- The `reduce()` method is another powerful array method that allows you to reduce an array into a single value by applying a function to each element of the array. It iterates over the array, accumulating a single value based on the logic defined in the callback function.
+
+The syntax for the `reduce()` method is as follows:
+```javascript
+array.reduce(callback(accumulator, currentValue, index, array)[, initialValue]);
+```
+- **accumulator**: The accumulated value computed in the previous iteration or the `initialValue` if provided.
+- **initialValue** (optional): A value that is used as the initial accumulator. If not provided, the first element of the array is used as the initial accumulator and the reduction starts from the second element.
+
+Here's an example to illustrate how the reduce() method works:
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce(function (acc, curr, i) {
+  console.log(`Iteration ${i}: ${acc}`)
+  return acc + curr;
+}, 0);
+
+console.log(sum); 
+
+
+// Output:
+Iteration 0: 0
+Iteration 1: 1
+Iteration 2: 3
+Iteration 3: 6
+Iteration 4: 10
+15
+```
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue;
+});
+
+console.log(sum); // Output: 15
+```
+
+- Reduce method also use to find `Maximum` and `Minimum` value in the array.
+```javascript
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const max = movements.reduce(function (acc, mov) {
+  if (acc < mov) {
+    acc = mov;
+  };
+  return acc;
+});
+
+console.log(max); // 3000
 ```
