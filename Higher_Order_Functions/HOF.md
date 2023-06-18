@@ -257,3 +257,25 @@ const max = movements.reduce(function (acc, mov) {
 
 console.log(max); // 3000
 ```
+
+# Search:
+
+### find():
+- The `find()` method is used to search for an element in an array. It takes a callback function as an argument and returns the first element in the array that satisfies the condition specified in the callback function. If no element is found, it returns `undefined`.
+- It's not return an array.
+- The `find()` method will iterate through the array and invoke the callback function for each element until the function returns `true`. At that point, it stops iterating and returns the current element. If the callback never returns `true` for any element, the method will return `undefined`.
+
+Here's the syntax for the `find()` method:
+```javascript
+array.find(callback(element, index, array)[, thisArg])
+```
+- `thisArg` (optional): An object to which the `this` keyword can refer inside the callback function.
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const foundElement = numbers.find((element, index, array) => {
+  return element > 3;
+});
+
+console.log(foundElement); // Output: 4
+```

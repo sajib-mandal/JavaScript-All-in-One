@@ -74,7 +74,7 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${Math.abs(mov)} €</div>
       </div>
     `;
 
@@ -82,31 +82,81 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
-
 // Create UserName
 const createUserNames = function (accs) {
-  accs.forEach(function(acc) {
+  accs.forEach(function (acc) {
     acc.userName = acc.owner
-    .toLowerCase()
-    .split(' ')
-    .map(name => name[0])
-    .join('');
-  })
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
 };
 
 createUserNames(accounts);
 
+// Event handler
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  
+  currentAccount = accounts.find(
+    acc => acc.userName === inputLoginUsername.value
+  );
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // Clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // Display movements
+    displayMovements(currentAccount.movements);
+
+    // Display balance
+    calcDisplayBalance(currentAccount.movements);
+
+    // Display summary
+    calcDisplaySummary(currentAccount);
+  }
+});
 
 // Total Balance
-const calcPrintBalance = function (acc) {
+const calcDisplayBalance = function (acc) {
   const balance = acc.reduce(function (acc, val) {
     return acc + val;
   });
-  labelBalance.textContent = `${balance}€`
+  labelBalance.textContent = `${balance}€`;
 };
 
-calcPrintBalance(account1.movements);
+// Summary: in, out, interest
+const calcDisplaySummary = function (acc) {
+  const sumInBalance = acc.movements
+    .filter(val => val > 0)
+    .reduce((acc, val) => acc + val, 0);
+
+  labelSumIn.textContent = `${sumInBalance} €`;
+
+  const sumOutBalance = acc.movements
+    .filter(val => val < 0)
+    .reduce((acc, val) => acc + val, 0);
+
+  labelSumOut.textContent = `${Math.abs(Math.floor(sumOutBalance))} €`;
+
+  const interest = acc.movements
+    .filter(val => val > 0)
+    .map(val => (val * acc.interestRate) / 100)
+    .filter(val => val >= 1)
+    .reduce((acc, val) => acc + val, 0);
+
+  labelSumInterest.textContent = `${Math.floor(interest)} €`;
+};
 
 /////////////////////////////////////////////////
 // LECTURES
@@ -183,7 +233,7 @@ calcPrintBalance(account1.movements);
 //   return acc + curr;
 // }, 0);
 
-// console.log(sum); 
+// console.log(sum);
 
 // /*
 // // Output:
@@ -195,11 +245,10 @@ calcPrintBalance(account1.movements);
 // 15
 // */
 
-
 // const deposit = movements.filter(function(mov) {
 //   return mov > 0;
 // });
-  
+
 // console.log(deposit)
 
 // 'for of' loop
@@ -226,16 +275,35 @@ calcPrintBalance(account1.movements);
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const largest = movements.find((val) => val >= 1000);
+// console.log(largest);
 
-const max = movements.reduce(function (acc, mov) {
-  if (acc < mov) {
-    acc = mov;
-  };
-  return acc;
-});
+// console.log(accounts);
 
-console.log(max);
+// const jd = accounts.for(acc => acc.userName === 'jd');
+// console.log(jd)
+
+// for (const acc of accounts) {
+//   if (acc.owner === 'Jessica Davis') {
+//     console.log(acc)
+//   }
+// }
+
+// accounts.forEach(acc => {
+//   if (acc.owner === 'Jessica Davis') {
+//     console.log(acc);
+//   }
+// });
+
+// const max = movements.reduce(function (acc, mov) {
+//   if (acc < mov) {
+//     acc = mov;
+//   };
+//   return acc;
+// });
+
+// console.log(max);
 
 // currencies.forEach(function(value, key, map) {
 //   console.log(`${key}: ${value}`);
@@ -287,3 +355,21 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
 // console.log(movementDescriptions);
 // // ['Movement 1: You Deposited 200', 'Movement 2: You Deposited 450', 'Movement 3: You withdrew 400', 'Movement 4: You Deposited 3000', 'Movement 5: You withdrew 650', 'Movement 6: You withdrew 130', 'Movement 7: You Deposited 70', 'Movement 8: You Deposited 1300']
+
+// Challenge #2:
+
+// const calcAverageHumanAge = arr => {
+//   const humanAge = arr
+//     .map(val => (val <= 2 ? 2 * val : 16 + val * 4))
+//     .filter(val => val >= 18)
+//     .reduce((acc, val, _, arr) => acc + val / arr.length, 0);
+//   return humanAge;
+// };
+
+// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+// console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+
+/*
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+*/
