@@ -279,3 +279,29 @@ const foundElement = numbers.find((element, index, array) => {
 
 console.log(foundElement); // Output: 4
 ```
+
+### findIndex():
+- The `findIndex` method is an array method that is used to find the index of the first element in an array that satisfies a given condition. It takes a callback function as an argument and executes this function on each element of the array until the condition is met.
+- The `findIndex` method returns the index of the first element that satisfies the condition specified in the callback function. If no element satisfies the condition, it returns -1.
+
+Here's the syntax for the findIndex method:
+```javascript
+array.findIndex(callback(element, index, array)[, thisArg])
+```
+
+Here's an example that demonstrates the usage of findIndex:
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// Find the index of the first even number
+const evenIndex = numbers.findIndex((number) => number % 2 === 0);
+console.log(evenIndex); // Output: 1 (index of number 2)
+
+// Find the index of the first number greater than 3
+const greaterThanThreeIndex = numbers.findIndex((number) => number > 3);
+console.log(greaterThanThreeIndex); // Output: 3 (index of number 4)
+
+// Find the index of the first number that is not present
+const notPresentIndex = numbers.findIndex((number) => number === 10);
+console.log(notPresentIndex); // Output: -1 (no number is equal to 10)
+```

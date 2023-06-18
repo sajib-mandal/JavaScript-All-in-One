@@ -95,12 +95,22 @@ const createUserNames = function (accs) {
 
 createUserNames(accounts);
 
+const updateUI = (acc) => {
+  // Display movements
+  displayMovements(acc.movements);
+
+  // Display balance
+  calcDisplayBalance(acc);
+
+  // Display summary
+  calcDisplaySummary(acc);
+}
+
 // Event handler
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
-  
   currentAccount = accounts.find(
     acc => acc.userName === inputLoginUsername.value
   );
@@ -116,23 +126,42 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
-    // Display movements
-    displayMovements(currentAccount.movements);
-
-    // Display balance
-    calcDisplayBalance(currentAccount.movements);
-
-    // Display summary
-    calcDisplaySummary(currentAccount);
+    updateUI(currentAccount);
   }
+});
+
+// Transfer money
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+
+  const receiverAcc = accounts.find(
+    acc => acc.userName === inputTransferTo.value
+  );
+
+  inputTransferTo.value = inputTransferAmount.value = '';
+  inputTransferAmount.blur();
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc.userName !== currentAccount.userName
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+  }
+
+  updateUI(currentAccount);
 });
 
 // Total Balance
 const calcDisplayBalance = function (acc) {
-  const balance = acc.reduce(function (acc, val) {
+  acc.balance = acc.movements.reduce(function (acc, val) {
     return acc + val;
-  });
-  labelBalance.textContent = `${balance}€`;
+  }, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 // Summary: in, out, interest
@@ -234,6 +263,12 @@ const calcDisplaySummary = function (acc) {
 // }, 0);
 
 // console.log(sum);
+
+// findIndex
+
+// const numbers = [1, 2, 3, 4, 5];
+// const evenIndex = numbers.findIndex(val => val % 2 === 0);
+// console.log(evenIndex)
 
 // /*
 // // Output:
