@@ -95,7 +95,7 @@ const createUserNames = function (accs) {
 
 createUserNames(accounts);
 
-const updateUI = (acc) => {
+const updateUI = acc => {
   // Display movements
   displayMovements(acc.movements);
 
@@ -104,7 +104,7 @@ const updateUI = (acc) => {
 
   // Display summary
   calcDisplaySummary(acc);
-}
+};
 
 // Event handler
 let currentAccount;
@@ -154,6 +154,45 @@ btnTransfer.addEventListener('click', function (e) {
   }
 
   updateUI(currentAccount);
+});
+
+// Request loan
+btnLoan.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+  const grantLoan = currentAccount.movements.some(mov => mov >= amount * 0.1);
+
+  inputLoanAmount.value = '';
+  inputLoanAmount.blur();
+  if (amount > 0 && grantLoan) {
+    currentAccount.movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+});
+
+// close account
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const closeUser = inputCloseUsername.value;
+  const closeUserPin = Number(inputClosePin.value);
+
+  if (
+    closeUser === currentAccount.userName &&
+    closeUserPin === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.userName === currentAccount.userName
+    );
+
+    // Delete account
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
 });
 
 // Total Balance
@@ -285,6 +324,16 @@ const calcDisplaySummary = function (acc) {
 // });
 
 // console.log(deposit)
+
+// some
+// const numbers = [1, 2, 3, 4, 5];
+// const hasEvenNumber = numbers.some(num => num % 2 === 0);
+// console.log(hasEvenNumber);
+
+// // every
+// const numbers = [2, 4, 6, 9, 10];
+// const allEvenNumbers = numbers.every(num => num % 2 === 0);
+// console.log(allEvenNumbers)
 
 // 'for of' loop
 // for (const [index, mov] of movements.entries()) {

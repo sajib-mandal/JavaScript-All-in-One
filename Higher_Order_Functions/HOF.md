@@ -267,7 +267,7 @@ console.log(max); // 3000
 
 Here's the syntax for the `find()` method:
 ```javascript
-array.find(callback(element, index, array)[, thisArg])
+array.find(callback(element, index, array)[, thisArg]);
 ```
 - `thisArg` (optional): An object to which the `this` keyword can refer inside the callback function.
 ```javascript
@@ -286,7 +286,7 @@ console.log(foundElement); // Output: 4
 
 Here's the syntax for the findIndex method:
 ```javascript
-array.findIndex(callback(element, index, array)[, thisArg])
+array.findIndex(callback(element, index, array)[, thisArg]);
 ```
 
 Here's an example that demonstrates the usage of findIndex:
@@ -305,3 +305,44 @@ console.log(greaterThanThreeIndex); // Output: 3 (index of number 4)
 const notPresentIndex = numbers.findIndex((number) => number === 10);
 console.log(notPresentIndex); // Output: -1 (no number is equal to 10)
 ```
+
+### some();
+- The `some()` method is used to check if at least one element in an array satisfies a specified condition. It executes a callback function for each element of the array until the callback returns a truthy value. If a truthy value is returned by the callback for any element, the some() method immediately returns `true`. If the callback returns a falsy value for all elements, the method returns `false`.
+
+The syntax for the some() method is as follows:
+```javascript
+array.some(callback(element, index, array)[, thisArg]);
+```
+
+Here's an example that demonstrates the usage of the some() method:
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const hasEvenNumber = numbers.some(function (element) {
+  return element % 2 === 0;
+});
+
+console.log(hasEvenNumber); // Output: true
+```
+In the example, the `some()` method is used to check if the array numbers contains at least one even number. The callback function checks if the current element (element) is divisible by 2. Since there is an even number in the array (2), the some() method returns true.
+
+### every():
+- The `every()` method is used to check if all elements in an array satisfy a specified condition. It executes a callback function for each element of the array until the callback returns a falsy value. If a falsy value is returned by the callback for any element, the every() method immediately returns `false`. If the callback returns a truthy value for all elements, the method returns `true`.
+
+The syntax for the every() method is as follows:
+```javascript
+array.every(callback(element, index, array)[, thisArg]);
+```
+
+Here's an example that demonstrates the usage of the every() method:
+```javascript
+const numbers = [2, 4, 6, 8, 10];
+
+const allEvenNumbers = numbers.every(function (element) {
+  return element % 2 === 0;
+});
+
+console.log(allEvenNumbers); // Output: true
+```
+
+In the example, the `every()` method is used to check if all numbers in the array numbers are even. The callback function checks if the current element (element) is divisible by 2. Since all elements in the array satisfy this condition, the every() method returns `true`.
