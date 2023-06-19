@@ -68,7 +68,7 @@ console.log(sumArray(numbers));
 
 The syntax of the forEach function is as follows:
 ```javascript
-array.forEach(callback(currentValue, index, array)[, thisArg]);
+array.forEach(callback(currentValue, index, array), thisArg);
 ```
 
 Let's break down the parameters:
@@ -153,7 +153,7 @@ EUR: EUR
 
 The syntax of the map() method is as follows:
 ```javascript
-array.map(callback(currentValue, index, array)[, thisArg])
+array.map(callback(currentValue, index, array), thisArg)
 ```
 
 Here's an example that demonstrates the usage of the map() method:
@@ -190,7 +190,7 @@ console.log(movementDescriptions);
 
 The syntax for the filter() method is as follows:
 ```javascript
-array.filter(callback(element, index, array)[, thisArg]);
+array.filter(callback(element, index, array), thisArg);
 ```
 
 Here's an example to illustrate how the `filter()` method works:
@@ -267,7 +267,7 @@ console.log(max); // 3000
 
 Here's the syntax for the `find()` method:
 ```javascript
-array.find(callback(element, index, array)[, thisArg]);
+array.find(callback(element, index, array), thisArg);
 ```
 - `thisArg` (optional): An object to which the `this` keyword can refer inside the callback function.
 ```javascript
@@ -286,7 +286,7 @@ console.log(foundElement); // Output: 4
 
 Here's the syntax for the findIndex method:
 ```javascript
-array.findIndex(callback(element, index, array)[, thisArg]);
+array.findIndex(callback(element, index, array), thisArg);
 ```
 
 Here's an example that demonstrates the usage of findIndex:
@@ -311,7 +311,7 @@ console.log(notPresentIndex); // Output: -1 (no number is equal to 10)
 
 The syntax for the some() method is as follows:
 ```javascript
-array.some(callback(element, index, array)[, thisArg]);
+array.some(callback(element, index, array), thisArg);
 ```
 
 Here's an example that demonstrates the usage of the some() method:
@@ -331,7 +331,7 @@ In the example, the `some()` method is used to check if the array numbers contai
 
 The syntax for the every() method is as follows:
 ```javascript
-array.every(callback(element, index, array)[, thisArg]);
+array.every(callback(element, index, array), thisArg);
 ```
 
 Here's an example that demonstrates the usage of the every() method:
@@ -346,3 +346,68 @@ console.log(allEvenNumbers); // Output: true
 ```
 
 In the example, the `every()` method is used to check if all numbers in the array numbers are even. The callback function checks if the current element (element) is divisible by 2. Since all elements in the array satisfy this condition, the every() method returns `true`.
+
+
+### flat():
+- The `flat()` method in JavaScript is used to flatten nested arrays. It creates a new array that is a one-dimensional version of the original array by concatenating all sub-arrays recursively up to the specified depth.
+- The `flat()` method returns a new array with the flattened elements. It does not modify the original array.
+
+Here's the basic syntax of the flat() method:
+```javascript
+array.flat([depth]);
+```
+
+-`array`: The array to be flattened.
+- `depth` (optional): Specifies the depth level until which the array should be flattened. By default, the depth is 1.
+
+Here's an example usage of the flat() method:
+```javascript
+const nestedArray = [1, 2, [3, 4, [5, 6]]];
+const flattenedArray = nestedArray.flat();
+
+console.log(flattenedArray);
+// Output: [1, 2, 3, 4, 5, 6]
+```
+
+If you want to flatten the array completely, regardless of the nesting depth, you can pass `Infinity` as the depth parameter:
+```javascript
+const deeplyNestedArray = [1, [2, [3, [4, [5]]]]];
+const completelyFlattenedArray = deeplyNestedArray.flat(Infinity);
+
+console.log(completelyFlattenedArray);
+// Output: [1, 2, 3, 4, 5]
+```
+
+### flatMap():
+- The `flatMap()` method is a combination of the `map()` and `flat()` methods. It applies a mapping function to each element of an array and then flattens the result into a new array.
+- The `flatMap()` method returns a new array with the flattened and mapped elements. It does not modify the original array.
+- The `flatMap()` method is useful when you want to map an array and then flatten the results in one step, avoiding the need for an additional `flat()` call.
+- The `flatMap()` method goes 1 level deep. But your array more than 1 level deep this time you need to use `flat()` method not `flatMap()`.
+
+Here's the basic syntax of the flatMap() method:
+```javascript
+array.flatMap(callback(currentValue, index, array), thisArg);
+```
+
+Here's an example usage of the flatMap() method:
+```javascript
+const numbers = [1, 2, 3, 4];
+
+const doubledAndSquared = numbers.flatMap((num) => [num * 2, num * num]);
+
+console.log(doubledAndSquared);
+// Output: [2, 1, 4, 4, 6, 9, 8, 16]
+```
+
+In the above example, the flatMap() method is called on the numbers array. The callback function takes each number, doubles it, and also calculates its square. The returned array is then flattened into a single level.
+
+**Note**:
+- It's important to note that the flatMap() method automatically removes any empty slots or undefined values from the returned array. If you want to preserve them, you can use the map() method instead.
+```javascript
+const arrayWithEmptySlots = [1, 2, , 4];
+
+const mappedAndFlattened = arrayWithEmptySlots.flatMap((num) => [num, num]);
+
+console.log(mappedAndFlattened);
+// Output: [1, 1, 2, 2, 4, 4]
+```

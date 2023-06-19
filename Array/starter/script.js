@@ -157,7 +157,7 @@ btnTransfer.addEventListener('click', function (e) {
 });
 
 // Request loan
-btnLoan.addEventListener('click', function(e) {
+btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
   const amount = Number(inputLoanAmount.value);
@@ -294,6 +294,16 @@ const calcDisplaySummary = function (acc) {
 
 // console.log(total)
 
+// flat method
+// const nestedArray = [1, 2, [3, 4, [5, [6]]]];
+// const flattenedArray = nestedArray.flat(Infinity);
+// console.log(flattenedArray);
+
+// flatMap
+// const numbers = [1, 2, , 3, 4];
+// const result = numbers.flatMap(num => [num*2, num*num]);
+// console.log(result)
+
 // const numbers = [1, 2, 3, 4, 5];
 
 // const sum = numbers.reduce(function (acc, curr, i) {
@@ -322,6 +332,17 @@ const calcDisplaySummary = function (acc) {
 // const deposit = movements.filter(function(mov) {
 //   return mov > 0;
 // });
+
+const accountMovements = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, val) => acc + val, 0);
+console.log(accountMovements);
+
+const accountMovements1 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, val) => acc + val, 0);
+console.log(accountMovements1);
 
 // console.log(deposit)
 
