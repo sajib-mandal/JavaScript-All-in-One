@@ -63,8 +63,8 @@ console.log(sumArray(numbers));
 ```
 
 ### forEach():
-- The `forEach` function is a higher-order function that allows you to iterate over the elements of an array and execute a provided function for each element. It is commonly used when you want to perform a certain operation on each item in an array without explicitly creating a new array.
-- `continue` and `break` statement not work `forEach` loop.
+- The forEach() method is a higher-order function that allows you to iterate over the elements of an array and execute a provided function for each element. It is commonly used when you want to perform a certain operation on each item in an array without explicitly creating a new array.
+- `continue` and `break` statement not work forEach() method.
 
 The syntax of the forEach function is as follows:
 ```javascript
@@ -146,9 +146,9 @@ EUR: EUR
 - But `reduce()` method not give any array.
 
 ### map():
-- The `map()` method is used to create a new array by applying a provided function to each element of an existing array. It doesn't modify the original array; instead, it returns a new array with the modified values.
-- `map()` method inside no console.log. It only `return`.
-- The `map()` method are store as a variable. Because it return an array.
+- The map() method is used to create a new array by applying a provided function to each element of an existing array. It doesn't modify the original array; instead, it returns a new array with the modified values.
+- The map() method inside no console.log. It only `return`.
+- The map() method are store as a variable. Because it return an array.
 - It also allow (value, index, arr).
 
 The syntax of the map() method is as follows:
@@ -185,8 +185,8 @@ console.log(movementDescriptions);
 ```
 
 ### filter():
-- The `filter()` method is an array method that creates a new array containing all the elements that pass a specific condition. It takes a callback function as its argument, which is executed on each element of the array. The callback function determines whether an element should be included in the resulting array.
-- The `filter()` method iterates over each element in the array and calls the callback function for each element. If the callback function returns `true` for an element, it is included in the new array. If the callback function returns `false`, the element is excluded.
+- The filter() method is an array method that creates a new array containing all the elements that pass a specific condition. It takes a callback function as its argument, which is executed on each element of the array. The callback function determines whether an element should be included in the resulting array.
+- The filter() method iterates over each element in the array and calls the callback function for each element. If the callback function returns `true` for an element, it is included in the new array. If the callback function returns `false`, the element is excluded.
 
 The syntax for the filter() method is as follows:
 ```javascript
@@ -205,7 +205,7 @@ console.log(evenNumbers); // Output: [2, 4]
 ```
 
 ### reduce():
-- The `reduce()` method is another powerful array method that allows you to reduce an array into a single value by applying a function to each element of the array. It iterates over the array, accumulating a single value based on the logic defined in the callback function.
+- The reduce() method is another powerful array method that allows you to reduce an array into a single value by applying a function to each element of the array. It iterates over the array, accumulating a single value based on the logic defined in the callback function.
 
 The syntax for the `reduce()` method is as follows:
 ```javascript
@@ -261,9 +261,9 @@ console.log(max); // 3000
 # Search:
 
 ### find():
-- The `find()` method is used to search for an element in an array. It takes a callback function as an argument and returns the first element in the array that satisfies the condition specified in the callback function. If no element is found, it returns `undefined`.
+- The find() method is used to search for an element in an array. It takes a callback function as an argument and returns the first element in the array that satisfies the condition specified in the callback function. If no element is found, it returns `undefined`.
 - It's not return an array.
-- The `find()` method will iterate through the array and invoke the callback function for each element until the function returns `true`. At that point, it stops iterating and returns the current element. If the callback never returns `true` for any element, the method will return `undefined`.
+- The find() method will iterate through the array and invoke the callback function for each element until the function returns `true`. At that point, it stops iterating and returns the current element. If the callback never returns `true` for any element, the method will return `undefined`.
 
 Here's the syntax for the `find()` method:
 ```javascript
@@ -281,8 +281,8 @@ console.log(foundElement); // Output: 4
 ```
 
 ### findIndex():
-- The `findIndex` method is an array method that is used to find the index of the first element in an array that satisfies a given condition. It takes a callback function as an argument and executes this function on each element of the array until the condition is met.
-- The `findIndex` method returns the index of the first element that satisfies the condition specified in the callback function. If no element satisfies the condition, it returns -1.
+- The findIndex() method is an array method that is used to find the index of the first element in an array that satisfies a given condition. It takes a callback function as an argument and executes this function on each element of the array until the condition is met.
+- The findIndex() method returns the index of the first element that satisfies the condition specified in the callback function. If no element satisfies the condition, it returns -1.
 
 Here's the syntax for the findIndex method:
 ```javascript
@@ -349,8 +349,8 @@ In the example, the `every()` method is used to check if all numbers in the arra
 
 
 ### flat():
-- The `flat()` method in JavaScript is used to flatten nested arrays. It creates a new array that is a one-dimensional version of the original array by concatenating all sub-arrays recursively up to the specified depth.
-- The `flat()` method returns a new array with the flattened elements. It does not modify the original array.
+- The flat() method in JavaScript is used to flatten nested arrays. It creates a new array that is a one-dimensional version of the original array by concatenating all sub-arrays recursively up to the specified depth.
+- The flat() method returns a new array with the flattened elements. It does not modify the original array.
 
 Here's the basic syntax of the flat() method:
 ```javascript
@@ -379,10 +379,10 @@ console.log(completelyFlattenedArray);
 ```
 
 ### flatMap():
-- The `flatMap()` method is a combination of the `map()` and `flat()` methods. It applies a mapping function to each element of an array and then flattens the result into a new array.
-- The `flatMap()` method returns a new array with the flattened and mapped elements. It does not modify the original array.
-- The `flatMap()` method is useful when you want to map an array and then flatten the results in one step, avoiding the need for an additional `flat()` call.
-- The `flatMap()` method goes 1 level deep. But your array more than 1 level deep this time you need to use `flat()` method not `flatMap()`.
+- The flatMap() method is a combination of the `map()` and `flat()` methods. It applies a mapping function to each element of an array and then flattens the result into a new array.
+- The flatMap() method returns a new array with the flattened and mapped elements. It does not modify the original array.
+- The flatMap() method is useful when you want to map an array and then flatten the results in one step, avoiding the need for an additional `flat()` call.
+- The flatMap() method goes 1 level deep. But your array more than 1 level deep this time you need to use `flat()` method not `flatMap()`.
 
 Here's the basic syntax of the flatMap() method:
 ```javascript
