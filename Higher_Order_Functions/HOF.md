@@ -411,3 +411,69 @@ const mappedAndFlattened = arrayWithEmptySlots.flatMap((num) => [num, num]);
 console.log(mappedAndFlattened);
 // Output: [1, 1, 2, 2, 4, 4]
 ```
+
+## Sorting An Array
+
+### Sort An Array of String:
+- To sort an array of strings, you can use the `sort()` method. The sort() method sorts the elements of an array in place and returns the sorted array. By default, it sorts the elements in lexicographic (dictionary) order based on the string's Unicode code points.
+- The sort() method mutate the original array.
+```javascript
+const arr = ["banana", "apple", "cherry", "date"];
+arr.sort();
+console.log(arr); // ["apple", "banana", "cherry", "date"]
+```
+
+If you want to sort the array in a different order or based on a specific criterion, you can provide a custom sorting function as an argument to the sort() method. This function should take two arguments (two elements of the array) and return a negative value if the first element should be sorted before the second element, a positive value if the first element should be sorted after the second element, or 0 if the elements are equal.
+```javascript
+const arr = ["banana", "apple", "cherry", "date"];
+arr.sort((a, b) => a.length - b.length);
+console.log(arr); // ["date", "apple", "cherry", "banana"]
+```
+
+### Sort An Array of Numbers:
+- To sort an array of numbers, you can use the sort() method. By default, the sort() method converts the elements to strings and sorts them based on their Unicode code points. However, this can lead to incorrect sorting when dealing with numbers because the comparison is based on string values. To properly sort an array of numbers, you need to provide a custom sorting function as an argument to the sort() method. 
+
+**Sort An Array of Numbers in Ascending Order**:
+```javascript
+const arr = [10, 5, 8, 2, 3];
+arr.sort((a, b) => a - b);
+console.log(arr); // [2, 3, 5, 8, 10]
+```
+
+**Explanation**:
+
+- The sort() method is called on the arr array.
+- The custom sorting function (a, b) => a - b subtracts b from a.
+- If the result is a negative value, it indicates that a should be sorted before b.
+- If the result is a positive value, it indicates that a should be sorted after b.
+- Based on the return values of the custom sorting function, the sort() method rearranges the elements of the array in ascending order.
+- The sorted array arr is then printed to the console using console.log().
+
+
+**Sort An Array of Numbers in Descending Order**:
+```javascript
+const arr = [10, 5, 8, 2, 3];
+arr.sort((a, b) => b - a);
+console.log(arr); // [10, 8, 5, 3, 2]
+```
+
+### Which Array Method Mutate The Original Array?
+- **push()**: Adds one or more elements to the end of an array and returns the new length of the array.
+- **pop()**: Removes the last element from an array and returns that element.
+- **shift()**: Removes the first element from an array and returns that element.
+- **unshift()**: Adds one or more elements to the beginning of an array and returns the new length of the array.
+- **splice()**: Changes the contents of an array by removing, replacing, or adding elements in place. It returns an array containing the removed elements.
+- **reverse()**: Reverses the order of the elements in an array in place.
+- **sort()**: Sorts the elements of an array in place and returns the sorted array.
+- **fill()**: Changes all elements in an array to a static value in place.
+- **copyWithin()**: Copies a sequence of elements within the array to the position starting at the specified target index in place.
+- **set()**: Sets the values of a typed array or a subarray within a typed array.
+
+### Which Array Method Not Mutate The Original Array?
+- **concat()**: Combines two or more arrays and returns a new array without modifying the existing arrays.
+- **slice()**: Extracts a shallow copy of a portion of an array into a new array based on specified start and end indices.
+- **filter()**: Creates a new array with all elements that pass the test implemented by the provided function.
+- **map()**: Creates a new array by applying a provided function to each element of the array.
+- **reduce()**: Applies a function against an accumulator and each element in the array, resulting in a single value.
+- **join()**: Joins all elements of an array into a string and returns the string.
+- concat(), slice(), filter(), map(), reduce(), and join() return a new array or a string without modifying the original array.

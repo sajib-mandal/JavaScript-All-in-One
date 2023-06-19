@@ -64,9 +64,10 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // implementation
 
 // Display Movements
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -81,6 +82,15 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
+
+// Sort movements
+let sorted = false;
+btnSort.addEventListener('click', function(e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+})
+
 
 // Create UserName
 const createUserNames = function (accs) {
@@ -202,6 +212,8 @@ const calcDisplayBalance = function (acc) {
   }, 0);
   labelBalance.textContent = `${acc.balance}€`;
 };
+
+
 
 // Summary: in, out, interest
 const calcDisplaySummary = function (acc) {
@@ -333,18 +345,23 @@ const calcDisplaySummary = function (acc) {
 //   return mov > 0;
 // });
 
-const accountMovements = accounts
-  .map(acc => acc.movements)
-  .flat()
-  .reduce((acc, val) => acc + val, 0);
-console.log(accountMovements);
+// const accountMovements = accounts
+//   .map(acc => acc.movements)
+//   .flat()
+//   .reduce((acc, val) => acc + val, 0);
+// console.log(accountMovements);
 
-const accountMovements1 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((acc, val) => acc + val, 0);
-console.log(accountMovements1);
+// const accountMovements1 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((acc, val) => acc + val, 0);
+// console.log(accountMovements1);
 
 // console.log(deposit)
+
+
+// // sort movements
+// const sortArray = account1.movements.sort((a, b) => a - b);
+// console.log(sortArray);
 
 // some
 // const numbers = [1, 2, 3, 4, 5];
