@@ -85,12 +85,11 @@ const displayMovements = function (movements, sort = false) {
 
 // Sort movements
 let sorted = false;
-btnSort.addEventListener('click', function(e) {
+btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
-})
-
+});
 
 // Create UserName
 const createUserNames = function (accs) {
@@ -212,8 +211,6 @@ const calcDisplayBalance = function (acc) {
   }, 0);
   labelBalance.textContent = `${acc.balance}€`;
 };
-
-
 
 // Summary: in, out, interest
 const calcDisplaySummary = function (acc) {
@@ -358,7 +355,6 @@ const calcDisplaySummary = function (acc) {
 
 // console.log(deposit)
 
-
 // // sort movements
 // const sortArray = account1.movements.sort((a, b) => a - b);
 // console.log(sortArray);
@@ -463,7 +459,68 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 // console.log(arr)
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// const movementDescriptions = movements.map(function (mov, i) {
+
+// const sums = movements.reduce(
+//   (sums, cur) => {
+//     cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+//     return sums;
+//   },
+//   { deposits: 0, withdrawals: 0 }
+// );
+
+// console.log(sums); // {deposits: 5020, withdrawals: -1180}
+
+// const { deposits, withdrawals } = movements.reduce(
+//   (sums, cur) => {
+//     // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+//     sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+//     return sums;
+//   },
+//   { deposits: 0, withdrawals: 0 }
+// );
+
+// console.log(deposits, withdrawals); // 5020 -1180
+
+// const convertTitleCase = (title) => {
+//   const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+//   const titleArray = title.toLowerCase().split(' ');
+//   titleArray.map((word, index) => {
+//     if (!exceptions.includes(word)) {
+//       titleArray[index] = word[0].toUpperCase() + word.slice(1);
+//     }
+//   });
+
+//   return titleArray.join(' ');
+// }
+
+// const title = 'this is a nice title';
+// console.log(convertTitleCase(title)); // "This Is a Nice Title"
+// console.log(convertTitleCase('SAJIB MANdal'))
+
+// const count = movements.reduce((count, val) => {
+//   if (val > 1000) {
+//     count += 1;
+//   }
+//   return count;
+// }, 0);
+// const count = movements.reduce(
+//   (count, val) => (val >= 1000 ? count + 1 : count),
+//   0
+// );
+
+// console.log(count); // 2
+
+// const numDeposit1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((acc, val) => {
+//     if (val >= 1000) {
+//       acc += 1;
+//     }
+//     return acc;
+//   }, 0);
+// console.log(numDeposit1000);
+// // const movementDescriptions = movements.map(function (mov, i) {
 //   if (mov > 0) {
 //     return `Movement ${i + 1}: You deposited ${mov}`;
 //   } else {
@@ -495,3 +552,62 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
 TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 */
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// 1.
+dogs.map(dog => {
+  dog.recFood = Math.trunc(dog.weight ** 0.75 * 28);
+});
+console.log(dogs);
+// console.log(dogs.slice())
+
+// 2.
+const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
+if (sarahDog.curFood > sarahDog.recFood) {
+  console.log(`Eating too much`);
+} else {
+  console.log(`Eating too little`);
+}
+
+// 3:
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch); // ['Matilda', 'Sarah', 'John']
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recFood)
+  .flatMap(own => own.owners);
+console.log(ownersEatTooLittle); // ['Alice', 'Bob', 'Michael']
+
+// 4:
+console.log(`${ownersEatTooMuch.join(' and ')} dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')} dogs eat too little!`);
+
+// 5:
+console.log(dogs.some(dog => dog.curFood === dog.recFood));
+
+// 6.
+const goodDog = (dog) => {
+  return dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1
+}
+
+const okAmount = dogs.some(
+  dog => goodDog(dog)
+);
+console.log(okAmount);
+
+// 7:
+const allGoodDog = dogs.filter(dog => goodDog(dog));
+console.log(allGoodDog);
+
+
+// 8:
+const dogsCopy = dogs.slice().sort((a, b) => a.recFood - b.recFood);
+console.log(dogs)
+console.log(dogsCopy)

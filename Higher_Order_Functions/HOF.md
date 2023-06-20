@@ -258,6 +258,50 @@ const max = movements.reduce(function (acc, mov) {
 console.log(max); // 3000
 ```
 
+- Reduce method also use to count element in the array.
+```javascript
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const count = movements.reduce((count, val) => {
+//   if (val > 1000) {
+//     count += 1;
+//   }
+//   return count;
+// }, 0);
+const count = movements.reduce(
+  (count, val) => (val >= 1000 ? count + 1 : count),
+  0
+);
+
+console.log(count); // 2
+```
+
+- Reduce method also use to create an Object.
+```javascript
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const sums = movements.reduce(
+  (sums, cur) => {
+    cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+    return sums;
+  },
+  { deposits: 0, withdrawals: 0 }
+);
+
+console.log(sums); // {deposits: 5020, withdrawals: -1180}
+
+const { deposits, withdrawals } = movements.reduce(
+  (sums, cur) => {
+    // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+    sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+    return sums;
+  },
+  { deposits: 0, withdrawals: 0 }
+);
+
+console.log(deposits, withdrawals); // 5020 -1180
+```
+
 # Search:
 
 ### find():
