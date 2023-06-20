@@ -26,10 +26,11 @@ var elements = document.getElementsByClassName("myClassName");
 var elements = document.getElementsByTagName("div");
 ```
 
-- `querySelector()`: This method returns the first element that matches a specific CSS selector (#idName or .className).
+- `querySelector()`: This method returns the first element that matches a specific CSS selector (#idName or .className or HTMLelement name).
 ```javascript
 var element = document.querySelector("#myElementId");
 var element = document.querySelector(".myElementId");
+var element = document.querySelector("body");
 ```
 
 - `querySelectorAll()`: This method returns a collection of elements that match a specific CSS selector.
