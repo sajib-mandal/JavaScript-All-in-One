@@ -1,6 +1,8 @@
 'use strict';
 
-console.log(document.querySelector('.message').textContent); // <p class="message">Start guessing...</p>
+let element = document.querySelector('.message');
+element.textContent = "New text content";
+console.log(element.textContent)
 
 // console.log(document.getElementById('message').textContent);
 
