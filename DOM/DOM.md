@@ -2,7 +2,7 @@
 
 JavaScript DOM (Document Object Model) manipulation refers to the process of modifying or interacting with the HTML structure and elements of a web page using JavaScript. The DOM represents the web page as a hierarchical tree structure, where each HTML element is represented as a node.
 
-<img scr="https://github.com/sajib-mandal/JavaScript-All-in-One/blob/main/images/DOM_js_72%20(1).jpg" height="400" weight="410">
+<img src="https://github.com/sajib-mandal/JavaScript-All-in-One/blob/main/images/DOM_js_72%20(1).jpg" height="400" weight="410">
 
 Here are some common DOM manipulation tasks you can perform using JavaScript:
 
