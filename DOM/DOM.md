@@ -98,6 +98,7 @@ element.style.backgroundColor = "yellow";
 element.classList.add("newClass");
 element.classList.remove("oldClass");
 element.classList.toggle("active");
+element.classList.contains("active");
 ```
 
 - `value` property: This property is commonly used for form elements like `<input>, <textarea>, and <select>`, allowing you to modify their values.
