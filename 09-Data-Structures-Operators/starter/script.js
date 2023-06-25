@@ -33,10 +33,21 @@ const restaurant = {
   orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
     console.log(starterIndex, mainIndex, time, address);
   },
-
-  
 };
 
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu.entries()) {
+  console.log(item)
+}
+
+
+
+// restaurant.numGuests = undefined;
+// const guests2 = restaurant.numGuests ?? 10;
+// console.log(guests2); // 0
+
+// console.log(10 && null)
 
 // restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach')
 // const arr = [1, 2, 3, 4, 5];
@@ -45,7 +56,6 @@ const restaurant = {
 
 // const arr1 = [1, 2, ...[4, 5]];
 // console.log(arr1)
-
 
 // const newRestaurantCopy = { ...restaurant };
 // newRestaurantCopy.name = 'Sajib Mandal';
@@ -101,38 +111,78 @@ const restaurant = {
 // ({ a, b } = obj);
 // console.log(a, b); // 23, 7
 
-// const bigObject = {
-//   name: "John",
-//   age: 25,
-//   address: {
-//     street: "123 Main St",
-//     city: "Exampleville",
-//     country: "Exampleland"
-//   },
-//   education: {
-//     highSchool: {
-//       name: "Example High School",
-//       graduationYear: 2015
-//     },
-//     university: {
-//       name: "Example University",
-//       graduationYear: 2019,
-//       degree: "Bachelor of Science"
-//     }
-//   },
-//   hobbies: ["reading", "coding", "hiking"],
-//   friends: [
-//     { name: "Alice", age: 27 },
-//     { name: "Bob", age: 26 },
-//     { name: "Charlie", age: 28 }
-//   ],
-//   greet: function() {
-//     console.log("Hello, my name is " + this.name + " and I'm " + this.age + " years old.");
-//   }
-// };
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
 
-// bigObject.greet();
 
-// const arr = [1, 2, 3]
-// const newArray = [0, ...arr, 7, 89];
-// console.log(...newArray)
+// 1. Create one player array for each team (variables 'players1' and 'players2')
+const [players1, players2] = game.players;
+
+/* 2. The first player in any player array is the goalkeeper and the others are field 
+players. For Bayern Munich (team 1) create one variable ('gk') with the 
+goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10 
+field players. */
+const [gk, ...fieldPlayers] = players1;
+
+// 3. Create an array 'allPlayers' containing all players of both teams (22 players) 
+const allPlayers = [...players1, ...players2];
+
+/* 4. During the game, Bayern Munich (team 1) used 3 substitute players. So create a 
+new array ('players1Final') containing all the original team1 players plus 
+'Thiago', 'Coutinho' and 'Perisic'. */
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+
+/* 5. Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2') */
+const { team1, x: draw, team2 } = game.odds;
+// console.log(team1, draw, team2)
+
+/* 6. Write a function ('printGoals') that receives an arbitrary number of player 
+names (not an array) and prints each of them to the console, along with the 
+number of goals that were scored in total (number of player names passed in) */
+const printGoals = function(...players) {
+  console.log(players)
+  console.log(`${players.length} goals were scored`)
+};
+
+/* The team with the lower odd is more likely to win. Print to the console which 
+team is more likely to win, without using an if/else statement or the ternary 
+operator. */
+// team1 <team2 && console.log('Team 1 is more likely to win');
