@@ -4,6 +4,8 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -35,14 +37,22 @@ const restaurant = {
   },
 };
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-for (const item of menu.entries()) {
-  console.log(item)
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
 }
 
+const order = restaurant.order?.(0, 1) ?? 'Method does not exist';
+console.log(order); // ['Focaccia', 'Pasta']
+const order1 = restaurant.orderMango?.(0, 1) ?? 'Method does not exist';
+console.log(order1); // Method does not exist
 
 
+const users = [{ name: 'Sajib', email: 'sajibmandal@gmail.com' }];
+console.log(users[0]?.rollnum ?? 'Users not exit'); // sajib
 // restaurant.numGuests = undefined;
 // const guests2 = restaurant.numGuests ?? 10;
 // console.log(guests2); // 0
@@ -152,7 +162,6 @@ const game = {
   },
 };
 
-
 // 1. Create one player array for each team (variables 'players1' and 'players2')
 const [players1, players2] = game.players;
 
@@ -162,7 +171,7 @@ goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10
 field players. */
 const [gk, ...fieldPlayers] = players1;
 
-// 3. Create an array 'allPlayers' containing all players of both teams (22 players) 
+// 3. Create an array 'allPlayers' containing all players of both teams (22 players)
 const allPlayers = [...players1, ...players2];
 
 /* 4. During the game, Bayern Munich (team 1) used 3 substitute players. So create a 
@@ -177,9 +186,9 @@ const { team1, x: draw, team2 } = game.odds;
 /* 6. Write a function ('printGoals') that receives an arbitrary number of player 
 names (not an array) and prints each of them to the console, along with the 
 number of goals that were scored in total (number of player names passed in) */
-const printGoals = function(...players) {
-  console.log(players)
-  console.log(`${players.length} goals were scored`)
+const printGoals = function (...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored`);
 };
 
 /* The team with the lower odd is more likely to win. Print to the console which 

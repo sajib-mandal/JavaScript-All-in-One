@@ -42,3 +42,29 @@ restaurant.numGuests = 0;
 const guests2 = restaurant.numGuests ?? 10;
 console.log(guests2); // 0
 ```
+
+## Optional Chaining ( ? )
+
+```javascript
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  // 'restaurant.openingHours.day?.open' is not working
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+```
+
+Also work Methods:
+```javascript
+const order = restaurant.order?.(0, 1) ?? 'Method does not exist';
+console.log(order); // ['Focaccia', 'Pasta']
+const order1 = restaurant.orderMango?.(0, 1) ?? 'Method does not exist';
+console.log(order1); // Method does not exist
+```
+
+Also work Arrays:
+```javascript
+const users = [{ name: 'Sajib', email: 'sajibmandal@gmail.com' }];
+console.log(users[0]?.name ?? 'Users not exit'); // sajib
+```
