@@ -90,3 +90,66 @@ const obj = { a: 23, b: 7, c: 14 };
 ({ a, b } = obj);
 console.log(a, b); // 23, 7
 ```
+
+# Looping Objects: Object Keys, Values, and Entries
+
+### Using Property Names (also called keys) Object.keys():
+- The `Object.keys()` is a built-in function that returns an array containing the keys of an object's enumerable properties. It extracts and returns an array of the property names (keys) of the object, in the same order as provided by a for...in loop. 
+
+The syntax for using Object.keys() is as follows:
+```javascript
+Object.keys(obj)
+```
+
+Example:
+```javascript
+const person = {
+  name: 'John',
+  age: 30,
+  occupation: 'Engineer'
+};
+
+const keys = Object.keys(person);
+console.log(keys); // ['name', 'age', 'occupation']
+```
+
+### Using Object.values():
+- The `Object.values()` is a built-in function that returns an array containing the values of an object's enumerable properties. It extracts and returns an array of the property values of the object, in the same order as provided by a for...in loop. 
+
+The syntax for using Object.values() is as follows:
+```javascript
+Object.values(obj)
+```
+
+Example:
+```javascript
+const person = {
+  name: 'John',
+  age: 30,
+  occupation: 'Engineer'
+};
+
+const values = Object.values(person);
+console.log(values); // ['John', 30, 'Engineer']
+```
+
+
+### Using Object.entries():
+- The Object.entries() is a built-in function that returns an array of an object's own enumerable property key-value pairs. It extracts and returns an array where each element is an array consisting of a property key and its corresponding value. The order of the key-value pairs in the resulting array is the same as provided by a for...in loop. 
+
+The syntax for using Object.entries() is as follows:
+```javascript
+Object.entries(obj)
+```
+
+Example:
+```javascript
+const person = {
+  name: 'John',
+  age: 30,
+  occupation: 'Engineer'
+};
+
+const entries = Object.entries(person);
+console.log(entries); // [ ['name', 'John'], ['age', 30], ['occupation', 'Engineer'] ]
+```

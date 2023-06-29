@@ -1,8 +1,11 @@
 # Set:
-Set is a collection of elements. Set can only contains unique elements.
-
-### Note:
+- Set is a collection of elements. Set can only contains unique elements.
 - Remember to create a new Set instance using the new Set() constructor before using these methods.
+- Set has no Index value. And also no order of the elements.
+
+```javascript
+console.log(new Set('sajib')); // {'s', 'a', 'j', 'i', 'b'}
+```
 ### add(value): 
 - Adds a new element with the specified value to the Set.
 ```javascript
@@ -97,4 +100,11 @@ console.log(set4.entries());
 
 const numSet2 = new Set([1, 2, 3, 4]);
 console.log(numSet2.entries()); // [Set Entries] { [ 1, 1 ], [ 2, 2 ], [ 3, 3 ], [ 4, 4 ] }
+```
+
+### Covert Array to Sets and then Array
+```javascript
+const staff = ['Sajib', 'Rajib', 'Rajib', 'Rahul'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
 ```

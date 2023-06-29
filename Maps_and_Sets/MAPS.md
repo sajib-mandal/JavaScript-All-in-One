@@ -1,10 +1,9 @@
 # Maps: (key, value)
 - Map not allow same (key, value) pare.
+- Remember to create a new Map instance using the new Map() constructor before using these methods.
 - if 'key' is same 'value' should be different or 
 - if 'value' is same but 'key' is different
-
-### Note:
-- Remember to create a new Map instance using the new Map() constructor before using these methods.
+- key can any type. Here object key is always string.
 
 ### set(key, value): 
 - Adds or updates an element in the Map with the specified key-value pair.
