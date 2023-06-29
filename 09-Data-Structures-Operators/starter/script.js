@@ -274,5 +274,5 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'First' : 'Second';
   // console.log(`[${half} HALF] ${min}: ${event}`);
 }
-
-console.log('lol'.length)
+const str = 'aello';
+console.log(str.charCodeAt(0)); // Output: 101
