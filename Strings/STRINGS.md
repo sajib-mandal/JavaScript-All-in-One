@@ -64,7 +64,7 @@ const str = 'Hello ';
 console.log(str.repeat(3)); // Output: "Hello Hello Hello "
 ```
 
-11. `replace(searchValue, replaceValue)`: Searches a string for a specified value or regular expression and returns a new string where the specified value is replaced.
+11. `replace(searchValue, replaceValue) and replaceAll(searchValue, replaceValue)`: Searches a string for a specified value or regular expression and returns a new string where the specified value is replaced.
 ```javascript
 const str = 'Hello World';
 console.log(str.replace('World', 'JavaScript')); // Output: "Hello JavaScript"
@@ -140,4 +140,18 @@ console.log(str.trim()); // Output: "Hello World"
 ```javascript
 const str = new String('Hello World');
 console.log(str.valueOf()); // Output: "Hello World"
+```
+
+24. `padStart(targetLength, padString)`: The padStart() method pads the current string with another string until it reaches the specified target length.
+```javascript
+const str = "Hello";
+const paddedStr = str.padStart(10, "*");
+console.log(paddedStr);  // Output: "*****Hello"
+```
+
+25. `padEnd(targetLength, padString)`: The padEnd() method pads the current string with another string until it reaches the specified target length.
+```javascript
+const str = "Hello";
+const paddedStr = str.padEnd(10, "*");
+console.log(paddedStr);  // Output: "Hello*****"
 ```

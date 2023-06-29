@@ -4,6 +4,19 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const flightsArray = flights.split('+');
+console.log(flightsArray)
+
+for (const flight of flightsArray) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.replaceAll('_', ' ')} from ${from.slice(0, 3).toUpperCase()} to ${to.slice(0, 3).toUpperCase()} (${time.replace(':', 'h')})`.padStart(43);
+  console.log(output)
+}
+
+
+
+
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -274,5 +287,84 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'First' : 'Second';
   // console.log(`[${half} HALF] ${min}: ${event}`);
 }
-const str = 'aello';
-console.log(str.charCodeAt(0)); // Output: 101
+
+
+// const pass = 'sAjiB';
+
+// const fixed = function(name) {
+//   const lower = name.toLowerCase();
+//   return lower[0].toUpperCase() + lower.slice(1);
+// };
+
+// console.log(fixed('saJiB'))
+// console.log(fixed('RaJiB'))
+
+// const giveMail = '    sajibMandalgmail.com  \n';
+
+// const maile = 'sajibmandal@gmail.com';
+// const login = function(mail) {
+//   const trimmedEmail = giveMail.trim().toLowerCase();
+//   return maile === trimmedEmail;
+// };
+
+// console.log(login(giveMail));
+
+// const price = '288,97F';
+// console.log(price.replace(',', '.'). replace('F', 'S'));
+
+// const announcement = 'All passengers come to bording door 23. Boarding door 23!';
+
+// console.log(announcement.replaceAll('door', 'gate'))
+
+// const str = 'Hello World';
+// console.log(str.endsWith('World')); // Output: true
+
+
+// const checkBaggage = function(items) {
+//   const item = items.toLowerCase()
+//   if (item.includes('gun') || item.includes('knife')) {
+//     return 'Not allowed'
+//   } else {
+//     return 'Allowed'
+//   }
+// };
+
+// console.log(checkBaggage('I have a Gun'));
+// console.log(checkBaggage('I have Knife'));
+// console.log(checkBaggage('I have candy'));
+
+// const [firstName, lastName] = 'Sajib Mandal'.split(' ');
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName)
+
+// const capitalizedName = function(name) {
+//   const cap = name.split(' '); // ['sajib', 'mandal']
+  
+//   for (let i = 0; i < cap.length; i++) {
+//     cap[i] = cap[i][0].toUpperCase() + cap[i].slice(1);
+//   }
+//   console.log(cap.join(' '))
+// };
+
+// capitalizedName('sajib mandal');
+// capitalizedName('rajib mandal');
+// capitalizedName('jessica ann smith davis');
+
+// const maskCreditCard = function(number) {
+//   const str = String(number);
+//   console.log(str.slice(-4).padStart(str.length, '*'))
+// };
+
+// maskCreditCard('456123');
+// console.log(new String())
+
+
+// const camelCase = function(str) {
+//   const [first, second] = str.trim().toLowerCase().split('_')
+//   return first + second[0].toUpperCase() + second.slice(1) 
+// }
+
+// console.log(camelCase('sajib_mandal'));
+// console.log(camelCase('Some_Variable'));
+// console.log(camelCase('    calculate_AGE'));
+// console.log(camelCase('delayed_departure'));
