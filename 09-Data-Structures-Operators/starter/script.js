@@ -272,5 +272,7 @@ const time = [...gameEvents.keys()].pop();
 
 for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'First' : 'Second';
-  console.log(`[${half} HALF] ${min}: ${event}`);
+  // console.log(`[${half} HALF] ${min}: ${event}`);
 }
+
+console.log('lol'.length)
