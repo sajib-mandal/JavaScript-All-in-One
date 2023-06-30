@@ -5,13 +5,13 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 const flightsArray = flights.split('+');
-console.log(flightsArray)
+// console.log(flightsArray)
 
-for (const flight of flightsArray) {
-  const [type, from, to, time] = flight.split(';');
-  const output = `${type.replaceAll('_', ' ')} from ${from.slice(0, 3).toUpperCase()} to ${to.slice(0, 3).toUpperCase()} (${time.replace(':', 'h')})`.padStart(43);
-  console.log(output)
-}
+// for (const flight of flightsArray) {
+//   const [type, from, to, time] = flight.split(';');
+//   const output = `${type.replaceAll('_', ' ')} from ${from.slice(0, 3).toUpperCase()} to ${to.slice(0, 3).toUpperCase()} (${time.replace(':', 'h')})`.padStart(43);
+//   console.log(output)
+// }
 
 
 
@@ -44,7 +44,7 @@ const restaurant = {
   },
 
   orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
-    console.log(starterIndex, mainIndex, time, address);
+    // console.log(starterIndex, mainIndex, time, address);
   },
 };
 
@@ -368,3 +368,32 @@ for (const [min, event] of gameEvents) {
 // console.log(camelCase('Some_Variable'));
 // console.log(camelCase('    calculate_AGE'));
 // console.log(camelCase('delayed_departure'));
+
+
+// 1.
+
+// const inputString = str => typeof str === 'string' ? 'Yes' : 'No'
+
+// console.log(inputString('sajib'))
+// console.log(typeof [1, 2, 3])
+
+//2.
+// const isBlank = str => str === '' ? 'True': 'False';
+// console.log(isBlank(""))
+// console.log(isBlank("sajib"));
+
+// console.log(''.length)
+
+
+// 3.
+// const stringArray = function(str) {
+//   return str.split(' ')
+// };
+// console.log(stringArray('sajib mandal'))
+
+//4.
+const truncateString = function(str, n) {
+  console.log(str.slice(0, n))
+};
+
+truncateString('Robin Singh', 4)
