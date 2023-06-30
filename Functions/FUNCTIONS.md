@@ -25,7 +25,7 @@ console.log(flight); // LH234
 console.log(sajib); // {name: 'Mr. Sajib Mandal', passport: 5783467456787}
 ```
 
-Above flight value not change but sajib.name changed explain why?
+**Above flight value not change but sajib.name changed explain why?**
 
 In the provided code, the `checkIn` function takes two parameters: `flightNum` and `passenger`. It attempts to check in the passenger by modifying the values of these parameters.
 
